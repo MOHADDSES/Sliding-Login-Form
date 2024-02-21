@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        animation: slide-up 0.5s ease;
+    }
+    .form-container {
+        position: relative;
+        overflow: hidden;
+    }
+    .form-slide {
+        display: flex;
+        transition: transform 0.3s ease-in-out;
+    }
+    .form-slide form {
+        width: 100%;
+    }
+    .slide {
+        transform: translateX(0);
+    }
+    .slide-left {
+        transform: translateX(-100%);
+    }
+    .slide-right {
+        transform: translateX(100%);
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <div class="form-slide">
+            <form id="login-form" class="slide">
+                <h2>Login</h2>
+                <input type="text" id="login-username" placeholder="Username or Email">
+                <input type="password" id="login-password" placeholder="Password">
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" id="show-registration">Register</a></p>
+            </form>
+
+            <form id="registration-form" class="slide-right">
+                <h2>Register</h2>
+                <input type="text" id="registration-username" placeholder="Username">
+                <input type="email" id="registration-email" placeholder="Email">
+                <input type="password" id="registration-password" placeholder="Password">
+                <button type="submit">Register</button>
+                <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const loginForm = document.getElementById("login-form");
+    const registrationForm = document.getElementById("registration-form");
+    const showRegistrationLink = document.getElementById("show-registration");
+    const showLoginLink = document.getElementById("show-login");
+
+    showRegistrationLink.addEventListener("click", function(event) {
+        event.preventDefault();
+        registrationForm.classList.remove("slide-right");
+        registrationForm.classList.add("slide");
+        loginForm.classList.add("slide-left");
+    });
+
+    showLoginLink.addEventListener("click", function(event) {
+        event.preventDefault();
+        loginForm.classList.remove("slide-left");
+        registrationForm.classList.remove("slide");
+        registrationForm.classList.add("slide-right");
+    });
+
+    loginForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        // Handle login form submission
+    });
+
+    registrationForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        // Handle registration form submission
+    });
+</script>
+
+</body>
+</html>
+ 

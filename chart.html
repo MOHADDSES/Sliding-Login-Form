@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        animation: slide-up 0.5s ease;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login</h2>
+    <form id="login-form">
+        <input type="text" id="login-username" placeholder="Username or Email">
+        <input type="password" id="login-password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#" id="show-registration">Register</a></p>
+
+    <form id="registration-form" style="display: none;">
+        <input type="text" id="registration-username" placeholder="Username">
+        <input type="email" id="registration-email" placeholder="Email">
+        <input type="password" id="registration-password" placeholder="Password">
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        var username = document.getElementById("login-username").value;
+        var password = document.getElementById("login-password").value;
+
+        // Perform validation and AJAX request here
+        console.log("Login Username:", username);
+        console.log("Login Password:", password);
+        // For demonstration, just logging username and password
+    });
+
+    document.getElementById("registration-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        var username = document.getElementById("registration-username").value;
+        var email = document.getElementById("registration-email").value;
+        var password = document.getElementById("registration-password").value;
+
+        // Perform validation and AJAX request here
+        console.log("Registration Username:", username);
+        console.log("Registration Email:", email);
+        console.log("Registration Password:", password);
+        // For demonstration, just logging username, email, and password
+    });
+
+    document.getElementById("show-registration").addEventListener("click", function(event) {
+        event.preventDefault();
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("registration-form").style.display = "block";
+    });
+</script>
+
+</body>
+</html>
